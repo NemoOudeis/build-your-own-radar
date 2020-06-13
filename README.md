@@ -104,17 +104,17 @@ Pull requests are welcome; please write tests whenever possible.
 Make sure you have nodejs installed.
 
 - `git clone git@github.com:thoughtworks/build-your-own-radar.git`
-- `npm install`
-- `npm test` - to run your tests
-- `npm run dev` - to run application in localhost:8080. This will watch the .js and .css files and rebuild on file changes
+- `yarn install`
+- `yarn test` - to run your tests
+- `yarn dev` - to run application in localhost:8080. This will watch the .js and .css files and rebuild on file changes
 
 To run End to End tests in headless mode
 - add a new environment variable 'TEST_URL' and set it to 'http://localhost:8080/'
-- `npm run end_to_end_test`
+- `yarn end_to_end_test`
 
 To run End to End tests in debug mode
 - add a new environment variable 'TEST_URL' and set it to 'http://localhost:8080/'
-- `npm run start`
+- `yarn start`
 - Click on 'Run all specs' in cypress window
 
 ### Don't want to install node? Run with one line docker
