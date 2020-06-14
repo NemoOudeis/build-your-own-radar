@@ -3,6 +3,6 @@ require('./images/logo.png')
 require('./images/radar_legend.png')
 require('./gtm.js')
 
-const sheet = require('./util/factory')
+import { renderRadar } from './util/factory'
 
-sheet()
+renderRadar()

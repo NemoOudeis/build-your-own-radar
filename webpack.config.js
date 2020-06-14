@@ -18,7 +18,7 @@ if (env) {
   require('dotenv').config({ path: env })
 }
 
-const main = ['./src/site.js']
+const main = ['./src/site.ts']
 const common = ['./src/common.js']
 let devtool
 
@@ -59,6 +59,7 @@ module.exports = {
     main: main,
     common: common
   },
+
   node: {
     fs: 'empty',
     net: 'empty',
@@ -70,6 +71,10 @@ module.exports = {
     path: buildPath,
     publicPath: '/',
     filename: '[name].[hash].js'
+  },
+
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
 
   module: {
@@ -107,10 +112,16 @@ module.exports = {
         use: [{ loader: 'expose-loader', options: 'jQuery' }, { loader: 'expose-loader', options: '$' }]
       },
       {
-        test: /\.(csv|tsv)$/,
-        use: ['csv-loader']
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.ya?ml$/,
+        type: 'json', // Required by Webpack v4
+        use: 'yaml-loader'
       }
-    ]
+    ],
   },
 
   plugins: plugins,

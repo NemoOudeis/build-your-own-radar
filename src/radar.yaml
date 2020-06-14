@@ -1,0 +1,89 @@
+---
+-
+  name: Apache Pulsar
+  ring: Assess
+  quadrant: Platforms
+  isNew: true
+  description: |-
+    <p>
+      <strong><a href=""https://pulsar.apache.org/en/"">Apache Pulsar</a></strong> is an open source pub-sub 
+      messaging/streaming platform, competing in a similar space with <a href=""/radar/tools/apache-kafka"">Apache Kafka</a>.
+      It provides expected functionality — such as low-latency async and sync message delivery and scalable persistent storage 
+      of messages — as well as various client libraries. What has excited us to evaluate Pulsar is its ease of scalability, 
+      particularly in large organizations with multiple segments of users. Pulsar natively supports multitenancy, georeplication, 
+      role-based access control and segregation of billing. We're also looking to Pulsar to solve the problem of a never-ending 
+      log of messages for our large-scale data systems where events are expected to persist indefinitely and subscribers are able 
+      to start consuming messages retrospectively. This is supported through a 
+      <a href=""https://pulsar.apache.org/docs/en/concepts-tiered-storage/"">tiered storage</a> model. Although Pulsar is a 
+      promising platform for large organizations, there is room for improvement. Its current installation requires administering 
+      <a href=""https://pulsar.apache.org/docs/en/administration-zk-bk/"">ZooKeeper and BookKeeper</a> among other pieces of 
+      technology. We hope that with its growing adoption, users can soon count on wider community support.
+    </p>
+-
+  name: Infrastructure as code
+  ring: Adopt
+  quadrant: Techniques
+  isNew: false
+  description: |-
+    <p>
+      Although <strong>infrastructure as code</strong> is a relatively old technique (we’ve featured it in the Radar in 2011), 
+      it has become vitally important in the modern cloud era where the act of setting up infrastructure has become the passing 
+      of configuration instructions to a cloud platform. When we say ""as code"" we mean that all the good practices we've learned 
+      in the software world should be applied to infrastructure. Using source control, adhering to the 
+      <a href=""https://en.wikipedia.org/wiki/Don%27t_repeat_yourself"">DRY principle</a>, modularization, maintainability, and 
+      using automated testing and deployment are all critical practices. Those of us with a deep software and infrastructure 
+      background need to empathize with and support colleagues who do not. Saying ""treat infrastructure like code"" isn't enough; 
+      we need to ensure the hard-won learnings from the software world are also applied consistently throughout the infrastructure realm.
+    </p>
+- 
+  name: React Hooks
+  ring: Adopt
+  quadrant: languages-and-frameworks
+  isNew: false
+  description: |-
+    <p>
+      <strong><a href=""https://reactjs.org/docs/hooks-intro.html"">React Hooks</a></strong> have introduced a new 
+      approach to managing stateful logic; given React components have always been closer to functions than classes, 
+      Hooks have embraced this and brought state to the functions, instead of taking function as methods to the state with classes. 
+      Based on our experience, Hooks improve reuse of functionality among components and code readability. 
+      Given Hooks’ testability improvements, using <a href=""https://reactjs.org/docs/test-renderer.html"">React Test Renderer</a> 
+      and <a href=""/radar/languages-and-frameworks/react-testing-library"">React Testing Library</a>, and their growing 
+      community support, we consider them our approach of choice.
+    </p>
+- 
+  name: Open Policy Agent (OPA)
+  ring: Trial
+  quadrant: Tools
+  isNew: false
+  description: |-
+    <p>
+      <strong><a href=""https://www.openpolicyagent.org/"">Open Policy Agent (OPA)</a></strong> has rapidly become a 
+      favorable component of many distributed cloud-native solutions that we build for our clients. OPA provides a 
+      uniform framework and <a href=""https://www.openpolicyagent.org/docs/latest/#rego"">language</a> for declaring, 
+      enforcing and controlling policies for various components of a cloud-native solution. It's a great example of a 
+      tool that implements <a href=""/radar/techniques/security-policy-as-code"">security policy as code</a>. We've had a 
+      smooth experience using OPA in multiple scenarios, including deploying resources to K8s clusters, enforcing access control 
+      across services in a <a href=""/radar/techniques/service-mesh"">service mesh</a> and fine-grained security controls as code 
+      for accessing application resources. A recent commercial offering, 
+      <a href=""https://www.styra.com/"">Styra's Declarative Authorization Service (DAS)</a>, eases the adoption of OPA for 
+      enterprises by adding a management tool, or control plane, to OPA for K8s with a prebuilt policy library, impact analysis 
+      of the policies and logging capabilities. We look forward to maturity and extension of OPA beyond operational services to 
+      (big) data-centric solutions.
+    </p>
+- 
+  name: Long-lived branches with Gitflow
+  ring: Hold
+  quadrant: Techniques
+  isNew: false
+  description: |-
+    <p>
+      Five years ago we highlighted the problems with <strong>long-lived branches with Gitflow</strong>. 
+      Essentially, long-lived branches are the opposite of continuously integrating all changes to the source code, 
+      and in our experience continuous integration is the better approach for most kinds of software development. 
+      Later we extended our caution to <a href=""/radar/techniques/gitflow"">Gitflow</a> itself, 
+      because we saw teams using it almost exclusively with long-lived branches. Today, we still see teams in 
+      settings where continuous delivery of web-based systems is the stated goal being drawn to long-lived branches. 
+      So we were delighted that the author of Gitflow has now added a note to his 
+      <a href=""https://nvie.com/posts/a-successful-git-branching-model/"">original article</a>, explaining that 
+      Gitflow was not intended for such use cases.
+    </p>
