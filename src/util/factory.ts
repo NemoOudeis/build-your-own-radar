@@ -8,7 +8,6 @@ const _ = {
   each: require('lodash/each')
 }
 
-const InputSanitizer = require('./inputSanitizer')
 const Radar = require('../models/radar')
 const Quadrant = require('../models/quadrant')
 const Ring = require('../models/ring')
@@ -19,6 +18,8 @@ const SheetNotFoundError = require('../exceptions/sheetNotFoundError')
 import { ExceptionMessages } from './exceptionMessages'
 import { Blip } from './radarData'
 import { validateBlips } from './contentValidator'
+import { sanitizeBlip } from './inputSanitizer';
+
 const radarData = require('../radar.yaml')
 
 import {Parser, HtmlRenderer} from 'commonmark';
@@ -74,12 +75,11 @@ const renderMarkdown = (markdown: string): string => {
 
 const buildSheet = (rawBlips: Blip[]): void => {
   try {
-    let blips = _.map(rawBlips, new InputSanitizer().sanitize)
-    validateBlips(blips)
-    blips.forEach(blip => {
+    let blips = rawBlips.map(blip => {
       blip.description = renderMarkdown(blip.description);
-    });
-    console.log(blips);
+      return sanitizeBlip(blip);
+    })
+    validateBlips(blips)
     plotRadar('Our Tech Radar', blips, 'CSV File', [])
   } catch (exception) {
     console.log(exception)

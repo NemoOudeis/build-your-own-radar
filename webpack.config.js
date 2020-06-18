@@ -74,7 +74,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js']
   },
 
   module: {
@@ -114,14 +114,14 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.ya?ml$/,
         type: 'json', // Required by Webpack v4
         use: 'yaml-loader'
       }
-    ],
+    ]
   },
 
   plugins: plugins,
