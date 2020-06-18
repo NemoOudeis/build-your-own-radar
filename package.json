@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "chance": "^1.0.18",
+    "commonmark": "^0.29.1",
     "d3": "^5.14.2",
     "d3-tip": "^0.7.1",
     "jquery": "^3.4.0",

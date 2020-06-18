@@ -21,6 +21,8 @@ import { Blip } from './radarData'
 import { validateBlips } from './contentValidator'
 const radarData = require('../radar.yaml')
 
+import {Parser, HtmlRenderer} from 'commonmark';
+
 const plotRadar = function (title: string, blips: Blip[], currentRadarName?: string, alternativeRadars?: any[]): void {
   document.title = title
   d3.selectAll('.loading').remove()
@@ -64,10 +66,20 @@ const plotRadar = function (title: string, blips: Blip[], currentRadarName?: str
   new GraphingRadar(size, radar).init().plot()
 }
 
+const renderMarkdown = (markdown: string): string => {
+  const parser = new Parser()
+  const renderer = new HtmlRenderer();
+  return renderer.render(parser.parse(markdown));
+}
+
 const buildSheet = (rawBlips: Blip[]): void => {
   try {
     let blips = _.map(rawBlips, new InputSanitizer().sanitize)
     validateBlips(blips)
+    blips.forEach(blip => {
+      blip.description = renderMarkdown(blip.description);
+    });
+    console.log(blips);
     plotRadar('Our Tech Radar', blips, 'CSV File', [])
   } catch (exception) {
     console.log(exception)
